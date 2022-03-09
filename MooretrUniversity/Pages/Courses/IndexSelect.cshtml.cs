@@ -13,7 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MooretrUniversity.Models.SchoolViewModels;
 
-namespace UniversityAPI.Pages.Courses
+namespace MooretrUniversity.Pages.Courses
 {
     public class IndexSelectModel : PageModel
     {
