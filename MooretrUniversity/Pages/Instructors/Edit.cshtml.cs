@@ -1,5 +1,4 @@
-﻿#nullable disable
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -31,7 +30,7 @@ namespace MooretrUniversity.Pages.Instructors
                 return NotFound();
             }
 
-            Instructor = await _context.Instructor.FirstOrDefaultAsync(m => m.InstructorID == id);
+            Instructor = await _context.Instructors.FirstOrDefaultAsync(m => m.InstructorID == id);
 
             if (Instructor == null)
             {
@@ -72,7 +71,7 @@ namespace MooretrUniversity.Pages.Instructors
 
         private bool InstructorExists(int id)
         {
-            return _context.Instructor.Any(e => e.InstructorID == id);
+            return _context.Instructors.Any(e => e.InstructorID == id);
         }
     }
 }

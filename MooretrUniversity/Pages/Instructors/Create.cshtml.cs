@@ -1,5 +1,4 @@
-﻿#nullable disable
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -36,7 +35,7 @@ namespace MooretrUniversity.Pages.Instructors
                 return Page();
             }
 
-            _context.Instructor.Add(Instructor);
+            _context.Instructors.Add(Instructor);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
