@@ -1,5 +1,4 @@
-﻿#nullable disable
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -30,7 +29,7 @@ namespace MooretrUniversity.Pages.Instructors
                 return NotFound();
             }
 
-            Instructor = await _context.Instructor.FirstOrDefaultAsync(m => m.InstructorID == id);
+            Instructor = await _context.Instructors.FirstOrDefaultAsync(m => m.InstructorID == id);
 
             if (Instructor == null)
             {
@@ -46,11 +45,11 @@ namespace MooretrUniversity.Pages.Instructors
                 return NotFound();
             }
 
-            Instructor = await _context.Instructor.FindAsync(id);
+            Instructor = await _context.Instructors.FindAsync(id);
 
             if (Instructor != null)
             {
-                _context.Instructor.Remove(Instructor);
+                _context.Instructors.Remove(Instructor);
                 await _context.SaveChangesAsync();
             }
 

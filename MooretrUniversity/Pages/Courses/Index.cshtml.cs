@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using MooretrUniversity.Data;
 using MooretrUniversity.Models;
 
-namespace UniversityAPI.Pages.Courses
+namespace MooretrUniversity.Pages.Courses
 {
     public class IndexModel : PageModel
     {
