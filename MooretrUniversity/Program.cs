@@ -1,5 +1,11 @@
-﻿// Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore
-// dotnet ef database update
+﻿/*Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore
+ *  Required packages:
+ *  dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+ *  dotnet add package Microsoft.EntityFrameworkCore.Design
+ *  dotnet tool install --global dotnet-ef
+ *  dotnet tool update --global dotnet-ef
+ *  
+*/
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -48,9 +54,9 @@ using (var scope = app.Services.CreateScope())
     var context = services.GetRequiredService<SchoolContext>();
 
     // Create the database if it doesn't exist. This overwrites all data so only useful during development. To preserve data, use migrations instead
-    context.Database.EnsureCreated();
+    //context.Database.EnsureCreated();
 
-    //DbInitializer.Initialize(context);
+    DbInitializer.Initialize(context);
 }
 
 app.UseHttpsRedirection();
