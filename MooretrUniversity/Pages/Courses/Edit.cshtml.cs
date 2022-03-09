@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using MooretrUniversity.Data;
 using MoortrUniversity.Models;
 
-namespace MooretrUniversity.Pages.Students
+namespace MooretrUniversity.Pages.Courses
 {
     public class EditModel : PageModel
     {
@@ -22,7 +22,7 @@ namespace MooretrUniversity.Pages.Students
         }
 
         [BindProperty]
-        public Student Student { get; set; }
+        public Course Course { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -31,12 +31,14 @@ namespace MooretrUniversity.Pages.Students
                 return NotFound();
             }
 
-            Student = await _context.Student.FirstOrDefaultAsync(m => m.StudentID == id);
+            Course = await _context.Course
+                .Include(c => c.Department).FirstOrDefaultAsync(m => m.CourseID == id);
 
-            if (Student == null)
+            if (Course == null)
             {
                 return NotFound();
             }
+           ViewData["DepartmentID"] = new SelectList(_context.Set<Department>(), "DepartmentID", "DepartmentID");
             return Page();
         }
 
@@ -49,7 +51,7 @@ namespace MooretrUniversity.Pages.Students
                 return Page();
             }
 
-            _context.Attach(Student).State = EntityState.Modified;
+            _context.Attach(Course).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +59,7 @@ namespace MooretrUniversity.Pages.Students
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!StudentExists(Student.StudentID))
+                if (!CourseExists(Course.CourseID))
                 {
                     return NotFound();
                 }
@@ -70,9 +72,9 @@ namespace MooretrUniversity.Pages.Students
             return RedirectToPage("./Index");
         }
 
-        private bool StudentExists(int id)
+        private bool CourseExists(int id)
         {
-            return _context.Student.Any(e => e.StudentID == id);
+            return _context.Course.Any(e => e.CourseID == id);
         }
     }
 }

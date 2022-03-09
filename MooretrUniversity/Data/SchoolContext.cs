@@ -8,13 +8,15 @@ using MoortrUniversity.Models;
 
 namespace MooretrUniversity.Data
 {
-    public class StudentContext : DbContext
+    public class SchoolContext : DbContext
     {
-        public StudentContext (DbContextOptions<StudentContext> options)
+        public SchoolContext (DbContextOptions<SchoolContext> options)
             : base(options)
         {
         }
 
         public DbSet<MoortrUniversity.Models.Student> Student { get; set; }
+
+        public DbSet<MoortrUniversity.Models.Course> Course { get; set; }
     }
 }

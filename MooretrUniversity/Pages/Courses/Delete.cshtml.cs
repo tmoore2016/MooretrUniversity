@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using MooretrUniversity.Data;
 using MoortrUniversity.Models;
 
-namespace MooretrUniversity.Pages.Students
+namespace MooretrUniversity.Pages.Courses
 {
     public class DeleteModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace MooretrUniversity.Pages.Students
         }
 
         [BindProperty]
-        public Student Student { get; set; }
+        public Course Course { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,9 +30,10 @@ namespace MooretrUniversity.Pages.Students
                 return NotFound();
             }
 
-            Student = await _context.Student.FirstOrDefaultAsync(m => m.StudentID == id);
+            Course = await _context.Course
+                .Include(c => c.Department).FirstOrDefaultAsync(m => m.CourseID == id);
 
-            if (Student == null)
+            if (Course == null)
             {
                 return NotFound();
             }
@@ -46,11 +47,11 @@ namespace MooretrUniversity.Pages.Students
                 return NotFound();
             }
 
-            Student = await _context.Student.FindAsync(id);
+            Course = await _context.Course.FindAsync(id);
 
-            if (Student != null)
+            if (Course != null)
             {
-                _context.Student.Remove(Student);
+                _context.Course.Remove(Course);
                 await _context.SaveChangesAsync();
             }
 
