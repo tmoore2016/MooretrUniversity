@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MoortrUniversity.Models
+namespace MooretrUniversity.Models
 {
     public class Course
     {

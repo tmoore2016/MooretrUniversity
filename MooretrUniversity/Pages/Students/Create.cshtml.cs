@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MooretrUniversity.Data;
-using MoortrUniversity.Models;
+using MooretrUniversity.Models;
 
 namespace MooretrUniversity.Pages.Students
 {

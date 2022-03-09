@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MoortrUniversity.Models
+namespace MooretrUniversity.Models
 {
     public enum Grade
     {
