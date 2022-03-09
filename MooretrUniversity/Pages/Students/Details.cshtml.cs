@@ -29,7 +29,13 @@ namespace MooretrUniversity.Pages.Students
                 return NotFound();
             }
 
-            Student = await _context.Student.FirstOrDefaultAsync(m => m.StudentID == id);
+            // Read the student data from the database
+            Student = await _context.Students
+                .Include(s => s.Enrollments) // Load the Enrollments navigation property
+                .ThenInclude(e => e.Course) // Then load the course navigation property inside enrollments
+                .AsNoTracking() // Improves performance for read-only scenarios              
+                                // Find the first row that satisfies the query filter criteria, or return null
+                .FirstOrDefaultAsync(m => m.StudentID == id); // Find a student ID
 
             if (Student == null)
             {
