@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using MooretrUniversity.Data;
 using MoortrUniversity.Models;
 
-namespace MooretrUniversity.Pages.Students
+namespace MooretrUniversity.Pages.Courses
 {
     public class IndexModel : PageModel
     {
@@ -20,11 +20,12 @@ namespace MooretrUniversity.Pages.Students
             _context = context;
         }
 
-        public IList<Student> Student { get;set; }
+        public IList<Course> Course { get;set; }
 
         public async Task OnGetAsync()
         {
-            Student = await _context.Student.ToListAsync();
+            Course = await _context.Course
+                .Include(c => c.Department).ToListAsync();
         }
     }
 }

@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using MooretrUniversity.Data;
 using MoortrUniversity.Models;
 
-namespace MooretrUniversity.Pages.Students
+namespace MooretrUniversity.Pages.Courses
 {
     public class CreateModel : PageModel
     {
@@ -22,11 +22,12 @@ namespace MooretrUniversity.Pages.Students
 
         public IActionResult OnGet()
         {
+        ViewData["DepartmentID"] = new SelectList(_context.Set<Department>(), "DepartmentID", "DepartmentID");
             return Page();
         }
 
         [BindProperty]
-        public Student Student { get; set; }
+        public Course Course { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -36,7 +37,7 @@ namespace MooretrUniversity.Pages.Students
                 return Page();
             }
 
-            _context.Student.Add(Student);
+            _context.Course.Add(Course);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
