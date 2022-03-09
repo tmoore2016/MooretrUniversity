@@ -18,5 +18,7 @@ namespace MooretrUniversity.Data
         public DbSet<MoortrUniversity.Models.Student> Student { get; set; }
 
         public DbSet<MoortrUniversity.Models.Course> Course { get; set; }
+
+        public DbSet<MoortrUniversity.Models.Instructor> Instructor { get; set; }
     }
 }
