@@ -1,6 +1,5 @@
 ﻿/*Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore
  *  Required packages:
- *  dotnet add package Microsoft.EntityFrameworkCore.Sqlite
  *  dotnet add package Microsoft.EntityFrameworkCore.Design
  *  dotnet tool install --global dotnet-ef
  *  dotnet tool update --global dotnet-ef
