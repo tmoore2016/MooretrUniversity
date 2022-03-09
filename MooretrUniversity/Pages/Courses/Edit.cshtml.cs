@@ -1,5 +1,4 @@
-﻿#nullable disable
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MooretrUniversity.Data;
-using MoortrUniversity.Models;
+using MooretrUniversity.Models;
 
 namespace MooretrUniversity.Pages.Courses
 {
@@ -31,14 +30,12 @@ namespace MooretrUniversity.Pages.Courses
                 return NotFound();
             }
 
-            Course = await _context.Course
-                .Include(c => c.Department).FirstOrDefaultAsync(m => m.CourseID == id);
+            Course = await _context.Courses.FirstOrDefaultAsync(m => m.CourseID == id);
 
             if (Course == null)
             {
                 return NotFound();
             }
-           ViewData["DepartmentID"] = new SelectList(_context.Set<Department>(), "DepartmentID", "DepartmentID");
             return Page();
         }
 
@@ -74,7 +71,7 @@ namespace MooretrUniversity.Pages.Courses
 
         private bool CourseExists(int id)
         {
-            return _context.Course.Any(e => e.CourseID == id);
+            return _context.Courses.Any(e => e.CourseID == id);
         }
     }
 }

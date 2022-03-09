@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using MoortrUniversity.Models;
+using MooretrUniversity.Models;
 
-namespace MoortrUniversity.Data
+namespace MooretrUniversity.Data
 {
     public class SchoolContext : DbContext
     {
