@@ -1,0 +1,41 @@
+﻿@page
+@model MooretrUniversity.Pages.CourseEnrollmentModel
+
+@{
+    ViewData["Title"] = "Course Enrollment Count";
+}
+
+<h2>Course Enrollment Count</h2>
+
+<table>
+    <tr>
+        <th>
+            Course ID
+        </th>
+        <th>
+            Course Name
+        </th>
+        <th>
+            Number of Students
+        </th>
+    </tr>
+
+    <!--The table data is dynamic. See CourseEnrollmentGroup.cs and CourseEnrollment.cshtml.cs 
+    -->
+    @*
+    @foreach (var item in Model.Courses) 
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                item.EnrollmentCount
+            </td>
+        </tr>
+    }
+    *@
+</table>
