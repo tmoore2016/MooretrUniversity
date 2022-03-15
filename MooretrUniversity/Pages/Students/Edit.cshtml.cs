@@ -31,7 +31,7 @@ namespace MooretrUniversity.Pages.Students
                 return NotFound();
             }
 
-            Student = await _context.Students.FindAsync(id);
+            Student = await _context.Students.FirstOrDefaultAsync(m => m.StudentID == id);
 
             if (Student == null)
             {
@@ -42,25 +42,37 @@ namespace MooretrUniversity.Pages.Students
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync(int id)
+        public async Task<IActionResult> OnPostAsync()
         {
-            var studentToUpdate = await _context.Students.FindAsync(id);
-
-            if (studentToUpdate == null)
+            if (!ModelState.IsValid)
             {
-                return NotFound();
+                return Page();
             }
 
-            if (await TryUpdateModelAsync<Student>(
-                studentToUpdate,
-                "student",
-                s => s.FirstName, s => s.LastName, s => s.EnrollmentDate))
+            _context.Attach(Student).State = EntityState.Modified;
+
+            try
             {
                 await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!StudentExists(Student.StudentID))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
             }
 
-            return Page();
+            return RedirectToPage("./Index");
+        }
+
+        private bool StudentExists(int id)
+        {
+            return _context.Students.Any(e => e.StudentID == id);
         }
     }
 }
