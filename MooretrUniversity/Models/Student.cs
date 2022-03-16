@@ -9,14 +9,14 @@ namespace MooretrUniversity.Models
         public int StudentID { get; set; }
         [Required]
         [StringLength(50, MinimumLength = 1, ErrorMessage = "First name must be less than 50 characters.")] // warning, Whitespace will satisfy these requirements
-        [RegularExpression(@"^[A-zÀ-ž]*[- ]?[A-zÀ-ž]*$")] // Match any letters, optionally followed by a single dash or space, followed by any letters
+        [RegularExpression(@"^[A-zÀ-ž]*[- ]?[A-zÀ-ž]*$", ErrorMessage = "Only letters, space, or dash allowed.")] // Match any letters, optionally followed by a single dash or space, followed by any letters
         //[Column("FirstName")] This would change the database column name
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
         // Last name parameters
         [Required]
         [StringLength(50, MinimumLength = 1, ErrorMessage = "Last name must be less than 50 characters.")] // warning, Whitespace will satisfy these requirements
-        [RegularExpression(@"^[A-zÀ-ž]*[- ]?[A-zÀ-ž]*$", ErrorMessage = "Enter letters, a dash, or a space.)")] // Match any letters, optionally followed by a single dash or space, followed by any letters
+        [RegularExpression(@"^[A-zÀ-ž]*[- ]?[A-zÀ-ž]*$", ErrorMessage = "Only letters, space, or dash allowed.)")] // Match any letters, optionally followed by a single dash or space, followed by any letters
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
         // Enrollment date parameters

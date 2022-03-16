@@ -3,9 +3,24 @@
  *  dotnet add package Microsoft.EntityFrameworkCore.Design
  *  dotnet tool install --global dotnet-ef
  *  dotnet tool update --global dotnet-ef
+ *  Update-Package Microsoft.EntityFrameworkCore.Tools
  *  
+ *  To remove the local database:
+ *  Package manager console: Drop-Database -Confirm
+ *  Migration commands:
+ *  PMC: Add-Migration InitialCreate // initial commit
+ *  PMC: Update-Database
+ *  PMC: Add-Migration NameLengthValidation // database change
+ *  PMC: Update-Database
+ *  PMC: remove-migration
+ *  See Migrations\timestamp_InitialCreate.cs after creation,
+ *  also SQL Server Object Explorer, "_EFMigrationsHistory" table for migration history
 */
 
+
+
+
+using Microsoft.AspNetCore.Authentication.Certificate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MooretrUniversity.Data;
@@ -35,17 +50,6 @@ else
     app.UseMigrationsEndPoint();
 }
 
-// To remove the local database:
-// Package manager console: Drop-Database -Confirm
-// Migration commands:
-// PMC: Add-Migration InitialCreate // initial commit
-// PMC: Update-Database
-// PMC: Add-Migration NameLengthValidation // database change
-// PMC: Update-Databse
-// PMC: remove-migration
-// See Migrations\timestamp_InitialCreate.cs after creation,
-// also SQL Server Object Explorer, "_EFMigrationsHistory"
-// table for migration history
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
