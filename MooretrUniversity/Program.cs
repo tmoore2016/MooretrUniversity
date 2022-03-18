@@ -42,7 +42,7 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+    //app.UseHsts();
 }
 else
 {
@@ -59,6 +59,7 @@ using (var scope = app.Services.CreateScope())
     // Create the database if it doesn't exist. This overwrites all data so only useful during development. To preserve data, use migrations instead
     //context.Database.EnsureCreated();
 
+    // Seed database after creation
     DbInitializer.Initialize(context);
 }
 
