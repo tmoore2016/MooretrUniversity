@@ -3,7 +3,8 @@
     @page would result in a url domain/Instructors?id=2 when select is clicked
     @page "{id:int?}" results in domain/Instructors/2
 *@
-@page "{id:int?}"
+
+@page "{instructorid:int?}"
 @model MooretrUniversity.Pages.Instructors.IndexModel
 
 @{
@@ -41,7 +42,7 @@
         {
             string selectedRow = "";
 
-            if (item.InstructorID == Model.InstructorsID)
+            if (item.InstructorID == Model.MyInstructorID)
             {
                 @* Bootstrap background color *@
                 selectedRow = "table-success";
@@ -73,10 +74,10 @@
                 </td>
                 <td>
                 @* Send the instructor's ID to the index method *@
-                    <a asp-page="./Index" asp-route-id="@item.InstructorID">Select</a> |
-                    <a asp-page="./Edit" asp-route-id="@item.InstructorID">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.InstructorID">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.InstructorID">Delete</a>
+                    <a asp-page="./Index" asp-route-instructorid="@item.InstructorID">Select</a> |
+                    <a asp-page="./Edit" asp-route-instructorid="@item.InstructorID">Edit</a> |
+                    <a asp-page="./Details" asp-route-instructorid="@item.InstructorID">Details</a> |
+                    <a asp-page="./Delete" asp-route-instructorid="@item.InstructorID">Delete</a>
                 </td>
             </tr>
         }
@@ -109,7 +110,12 @@
             }
             <tr class="@selectedRow">
                 <td>
-                    <a asp-page="./Index" asp-route-courseID="@item.CourseID">Select</a>
+                    
+                    <a asp-action="Index" asp-route-courseid="@item.CourseID">Select</a>
+                    
+                    @*
+                    @Html.ActionLink("Select", "OnGetAsync", new{ courseID = item.CourseID})
+                    *@
                 </td>
                 <td>
                     @item.CourseID

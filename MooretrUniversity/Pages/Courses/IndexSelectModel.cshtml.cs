@@ -30,14 +30,14 @@ namespace MooretrUniversity.Pages.Courses
 
         public async Task OnGetAsync()
         {
-            CourseVM = await _context.Courses
-                .Select(p => new CourseViewModel
-                {
-                    CourseID = p.CourseID,
-                    Title = p.Title,
-                    Credits = p.Credits,
-                    DepartmentName = p.Department.Name
-                }).ToListAsync();
+            CourseVM = await _context.Courses.Select(p => new CourseViewModel
+            {
+                CourseID = p.CourseID,
+                Title = p.Title,
+                Credits = p.Credits,
+                DepartmentName = p.Department.Name
+
+            }).ToListAsync();
         }
         #endregion
     }

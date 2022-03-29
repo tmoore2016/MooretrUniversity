@@ -18,7 +18,7 @@ namespace MooretrUniversity.Models
 
 
         //Foreign key 
-        public int? DepartmentID { get; set; }
+        public int DepartmentID { get; set; }
 
         // Navigation properties
         public Department Department { get; set; }

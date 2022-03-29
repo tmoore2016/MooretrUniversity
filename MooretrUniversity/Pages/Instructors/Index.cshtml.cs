@@ -24,11 +24,11 @@ namespace MooretrUniversity.Pages.Instructors
 
         public InstructorIndexData InstructorData { get; set; }
 
-        public int InstructorsID { get; set; }
+        public int MyInstructorID { get; set; }
 
         public int CourseID { get; set; }
 
-        public async Task OnGetAsync(int? instructorID, int? courseID)
+        public async Task OnGetAsync(int? instructorid, int? courseid)
         {
             // Query: Eager load Instructor.Office, Instructor.Courses, Course.Department
             InstructorData = new InstructorIndexData();
@@ -40,25 +40,25 @@ namespace MooretrUniversity.Pages.Instructors
                 .ToListAsync();
 
             // When an instructor is selected, the where method returns a collection, the single method is used on a collection with only 1 entity. The instructor entity provides access to the course navigation property
-            if (instructorID != null)
+            if (instructorid != null)
             {
-                InstructorsID = instructorID.Value;
+                MyInstructorID = instructorid.Value;
                 Instructor instructor = InstructorData.Instructors
-                    .Where(i => i.InstructorID == instructorID.Value).Single();
+                    .Where(i => i.InstructorID == instructorid.Value).Single();
                 InstructorData.Courses = instructor.Courses;
             }
 
             // When a course is selected, the view model's Enrollments property is populated
-            if (courseID != null)
+            if (courseid != null)
             {
-                CourseID = courseID.Value;
+                CourseID = courseid.Value;
                 var selectedCourse = InstructorData.Courses
-                    .Where(c => c.CourseID == courseID).Single();
+                    .Where(x => x.CourseID == courseid).Single();
                 await _context.Entry(selectedCourse)
-                    .Collection(c => c.Enrollments).LoadAsync();
+                    .Collection(x => x.Enrollments).LoadAsync();
                 foreach (Enrollment enrollment in selectedCourse.Enrollments)
                 {
-                    await _context.Entry(enrollment).Reference(c => c.Student).LoadAsync();
+                    await _context.Entry(enrollment).Reference(x => x.Student).LoadAsync();
                 }
 
                 InstructorData.Enrollments = selectedCourse.Enrollments;
