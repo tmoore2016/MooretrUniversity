@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using MooretrUniversity.Data;
 using MooretrUniversity.Models;
 
+// This class controls the Create page for Courses
 namespace MooretrUniversity.Pages.Courses
 {
-    public class CreateModel : PageModel
+    //public class CreateModel : PageModel
+    public class CreateModel : DepartmentNamePageModel
     {
         private readonly MooretrUniversity.Data.SchoolContext _context;
 
@@ -21,6 +23,7 @@ namespace MooretrUniversity.Pages.Courses
 
         public IActionResult OnGet()
         {
+            PopulateDepartmentDropDownList(_context);
             return Page();
         }
 
@@ -30,6 +33,7 @@ namespace MooretrUniversity.Pages.Courses
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
+            /*
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -39,6 +43,23 @@ namespace MooretrUniversity.Pages.Courses
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
+            */
+            var emptyCourse = new Course();
+
+            // Prevent overposting with TryUpdateModelAsync
+            if (await TryUpdateModelAsync<Course>(
+                emptyCourse,
+                "course",
+                s => s.CourseID, s => s.DepartmentID, s => s.Title, s => s.Credits))
+            {
+                _context.Courses.Add(emptyCourse);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            }
+
+            // Select DepartmentID if TryUpdateModelAsync fails
+            PopulateDepartmentDropDownList(_context, emptyCourse.DepartmentID);
+            return Page();
         }
     }
 }
