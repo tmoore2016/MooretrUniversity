@@ -33,6 +33,7 @@ namespace MooretrUniversity.Pages.Courses
                 .ThenInclude(s => s.Student) // Then load the course navigation property inside enrollments
                 .AsNoTracking() // Improves performance for read-only scenarios              
                                 // Find the first row that satisfies the query filter criteria, or return null
+                .Include(c => c.Department)
                 .FirstOrDefaultAsync(m => m.CourseID == id);
 
             if (Course == null)
