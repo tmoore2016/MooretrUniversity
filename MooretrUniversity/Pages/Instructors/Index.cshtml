@@ -38,6 +38,9 @@
         </tr>
     </thead>
     <tbody>
+        @* Declare a local variable *@
+        @{ var comma = ", "; }
+
         @foreach (var item in Model.InstructorData.Instructors) 
         {
             string selectedRow = "";
@@ -68,7 +71,7 @@
                     @{
                         foreach (var course in item.Courses)
                         {
-                            @course.CourseID @: @course.Title <br/>
+                            @course.CourseID @comma @course.Title <br/>
                         }
                     }
                 </td>
