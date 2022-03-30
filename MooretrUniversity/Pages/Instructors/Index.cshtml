@@ -75,9 +75,9 @@
                 <td>
                 @* Send the instructor's ID to the index method *@
                     <a asp-page="./Index" asp-route-instructorid="@item.InstructorID">Select</a> |
-                    <a asp-page="./Edit" asp-route-instructorid="@item.InstructorID">Edit</a> |
-                    <a asp-page="./Details" asp-route-instructorid="@item.InstructorID">Details</a> |
-                    <a asp-page="./Delete" asp-route-instructorid="@item.InstructorID">Delete</a>
+                    <a asp-page="./Edit" asp-route-id="@item.InstructorID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.InstructorID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.InstructorID">Delete</a>
                 </td>
             </tr>
         }
