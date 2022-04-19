@@ -33,7 +33,7 @@ namespace MooretrUniversity.Pages.Instructors
             // Query: Eager load Instructor.Office, Instructor.Courses, Course.Department
             InstructorData = new InstructorIndexData();
             InstructorData.Instructors = await _context.Instructors
-                .Include(i => i.Office)
+                .Include(i => i.OfficeAssignment)
                 .Include(i => i.Courses)
                     .ThenInclude(c => c.Department)
                 .OrderBy(i => i.LastName)

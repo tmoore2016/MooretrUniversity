@@ -8,6 +8,7 @@ namespace MooretrUniversity.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)] // Allows the app to specify the primary key
         [Display(Name = "Course ID")]
+        [Range(1000, 9999)]
         public int CourseID { get; set; }
 
         [StringLength(50, MinimumLength = 3)]

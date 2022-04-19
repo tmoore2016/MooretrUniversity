@@ -37,6 +37,6 @@ namespace MooretrUniversity.Models
         // Navigation properties
         public ICollection<Course> Courses { get; set; } // An instructor can teach multiple courses, so a collection is used
 
-        public OfficeAssignment Office { get; set; }
+        public OfficeAssignment OfficeAssignment { get; set; }
     }
 }
