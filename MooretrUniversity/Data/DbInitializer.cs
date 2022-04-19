@@ -205,7 +205,7 @@ namespace MooretrUniversity.Data
 
                 new Course
                 {
-                    CourseID=163, Title="Calculus II for Engineers", Credits=4, DepartmentID=1, Instructors = new List<Instructor>{ instructors[0], instructors[4] }
+                    CourseID=1163, Title="Calculus II for Engineers", Credits=4, DepartmentID=1, Instructors = new List<Instructor>{ instructors[0], instructors[4] }
                 },
 
                 new Course
@@ -247,7 +247,7 @@ namespace MooretrUniversity.Data
 
                 new Enrollment
                 {
-                    StudentID=1,CourseID=163,Grade=Grade.A
+                    StudentID=1,CourseID=1163,Grade=Grade.A
                 },
 
                 new Enrollment
@@ -322,7 +322,7 @@ namespace MooretrUniversity.Data
 
                 new Enrollment
                 {
-                    StudentID=6,CourseID=163,Grade=Grade.C
+                    StudentID=6,CourseID=1163,Grade=Grade.C
                 },
 
                 new Enrollment
@@ -367,7 +367,7 @@ namespace MooretrUniversity.Data
 
                 new Enrollment
                 {
-                    StudentID=7,CourseID=163,Grade=Grade.A
+                    StudentID=7,CourseID=1163,Grade=Grade.A
                 },
 
                 new Enrollment
@@ -402,7 +402,7 @@ namespace MooretrUniversity.Data
 
                 new Enrollment
                 {
-                    StudentID=8,CourseID=163,Grade=Grade.C
+                    StudentID=8,CourseID=1163,Grade=Grade.C
                 },
 
                 new Enrollment
@@ -432,7 +432,7 @@ namespace MooretrUniversity.Data
 
                 new Enrollment
                 {
-                    StudentID=9,CourseID=163,Grade=Grade.B
+                    StudentID=9,CourseID=1163,Grade=Grade.B
                 },
 
                 new Enrollment
