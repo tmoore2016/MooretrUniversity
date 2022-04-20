@@ -19,9 +19,14 @@ namespace MooretrUniversity.Pages.Departments
             _context = context;
         }
 
+        // Replace ViewData["InstructorID"]
+        public SelectList InstructorNameSL { get; set; }
+
         public IActionResult OnGet()
         {
-        ViewData["InstructorID"] = new SelectList(_context.Instructors, "InstructorID", "FirstName");
+            // Use strongly typed data rather than ViewData
+            //ViewData["InstructorID"] = new SelectList(_context.Instructors, "InstructorID", "FirstName");
+            InstructorNameSL = new SelectList(_context.Instructors, "InstructorID", "FullName");
             return Page();
         }
 
