@@ -24,6 +24,10 @@ namespace MooretrUniversity.Models
         // Foreign key
         public int? InstructorID { get; set; } // A department may or may not have an administrator
 
+        // For Concurrency check, if any values have changed while editing, a concurrency exception is thrown
+        [Timestamp]
+        public byte[] ConcurrencyToken { get; set; }
+
         // Navigation property named Admin but is an Instructor entity
         public Instructor Administrator { get; set; } // The administrator is always an instructor
 
