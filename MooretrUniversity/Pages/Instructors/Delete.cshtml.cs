@@ -45,13 +45,27 @@ namespace MooretrUniversity.Pages.Instructors
                 return NotFound();
             }
 
-            Instructor = await _context.Instructors.FindAsync(id);
+            Instructor instructor = await _context.Instructors
+                .Include(i => i.Courses)
+                .SingleAsync(i => i.InstructorID == id);
 
-            if (Instructor != null)
+            if (instructor == null)
             {
-                _context.Instructors.Remove(Instructor);
-                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
+            
+            // Check if the instructor is a deparment administrator
+            var departments = await _context.Departments
+                .Where(d => d.InstructorID == id)
+                .ToListAsync();
+
+            // Check if the instructor is assigned to any departments
+            departments.ForEach(d => d.InstructorID = null);
+
+            // Remove the instructor from all positions
+            _context.Instructors.Remove(instructor);
+
+            await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }
