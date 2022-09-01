@@ -21,6 +21,7 @@ using Microsoft.AspNetCore.Authentication.Certificate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MooretrUniversity.Data;
+using Azure.Identity;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

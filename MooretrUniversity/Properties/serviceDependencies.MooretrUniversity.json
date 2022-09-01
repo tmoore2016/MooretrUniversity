@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "apis1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/MooretrUniversityapi/apis/MooretrUniversity",
+      "type": "apis.azure"
+    },
+    "secrets2": {
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.KeyVault/vaults/MooretrUniversityvault",
+      "type": "secrets.keyVault",
+      "connectionId": "VaultMooretrUniversity"
+    },
+    "mssql1": {
+      "secretStore": "AzureKeyVault",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/mooretruniversity-server/databases/mooretruniversity-database",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:SchoolContext",
+      "dynamicId": null
+    }
+  }
+}
