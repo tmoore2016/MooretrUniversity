@@ -5,6 +5,7 @@
  *  dotnet tool update --global dotnet-ef
  *  Update-Package Microsoft.EntityFrameworkCore.Tools
  *  
+ *  
  *  To remove the local database:
  *  Package manager console: Drop-Database -Confirm
  *  Migration commands:
