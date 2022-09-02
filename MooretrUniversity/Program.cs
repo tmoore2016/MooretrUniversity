@@ -5,15 +5,14 @@
  *  dotnet tool update --global dotnet-ef
  *  Update-Package Microsoft.EntityFrameworkCore.Tools
  *  
- *  
- *  To remove the local database:
- *  Package manager console: Drop-Database -Confirm
  *  Migration commands:
- *  PMC: Add-Migration InitialCreate // initial commit
+ *  Package Manager Console: Add-Migration InitialCreate // initial commit
  *  PMC: Update-Database
  *  PMC: Add-Migration NameLengthValidation // database change
  *  PMC: Update-Database
  *  PMC: remove-migration
+ *  To remove the local database:
+ *  PMC: Drop-Database -Confirm
  *  See Migrations\timestamp_InitialCreate.cs after creation,
  *  also SQL Server Object Explorer, "_EFMigrationsHistory" table for migration history
 */
@@ -56,7 +55,7 @@ using (var scope = app.Services.CreateScope())
     var context = services.GetRequiredService<SchoolContext>();
 
     // Create the database if it doesn't exist. This overwrites all data so only useful during development. To preserve data, use migrations instead
-    //context.Database.EnsureCreated();
+    context.Database.EnsureCreated();
 
     // Seed database after creation
     DbInitializer.Initialize(context);

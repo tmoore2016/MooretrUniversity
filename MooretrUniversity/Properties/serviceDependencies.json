@@ -7,11 +7,6 @@
     "secrets2": {
       "type": "secrets",
       "connectionId": "VaultUri"
-    },
-    "mssql1": {
-      "type": "mssql",
-      "connectionId": "ConnectionStrings:SchoolContext",
-      "dynamicId": null
     }
   }
 }
