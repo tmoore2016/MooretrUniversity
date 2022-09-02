@@ -1,11 +1,5 @@
 {
   "dependencies": {
-    "mssql1": {
-      "secretStore": "LocalSecretsFile",
-      "resourceId": null,
-      "type": "mssql.local",
-      "connectionId": "ConnectionStrings:SchoolContext"
-    },
     "secrets1": {
       "secretStore": null,
       "resourceId": null,
