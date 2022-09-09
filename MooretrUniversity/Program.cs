@@ -55,10 +55,10 @@ using (var scope = app.Services.CreateScope())
     var context = services.GetRequiredService<SchoolContext>();
 
     // Create the database if it doesn't exist. This overwrites all data so only useful during development. To preserve data, use migrations instead
-    context.Database.EnsureCreated();
+    //context.Database.EnsureCreated();
 
     // Seed database after creation
-    DbInitializer.Initialize(context);
+    //DbInitializer.Initialize(context);
 }
 
 app.UseHttpsRedirection();
